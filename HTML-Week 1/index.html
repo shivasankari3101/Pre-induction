@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>HTML</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 5%;
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        p{
+            font-weight:900;
+        }
+
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            min-width: 100px;
+        }
+
+        table.form, table.form td {
+            border: none;
+        }
+
+        input[type="submit"] {
+            margin: 20px 0;
+        }
+
+        svg {
+            background-color: #EAEAEA;
+        }
+    </style>
+</head>
+<body>
+    <h1>ZoomRx - Pre-induction</h1>
+    <h2>HTML</h2>
+    <ol>
+        <!-- Question No. 1-->
+        <li>
+            <p>Write the following line in HTML.</p>
+            My cat is <b>very</b> grumpy
+        </li>
+
+        <!-- Question No. 2-->
+        <li>
+            <p>Add a hyperlink to the below line pointing to the web address https://www.google.com/.</p>
+            <a href="https://www.google.com/">
+                Click here to search
+            </a>
+        </li>
+
+        <!-- Question No. 3-->
+        <li>
+            <p>How do you write comments in the HTML code?</p>
+            Comments are enclosed with <span><b>&lt;!-- and --&gt;</b></span>
+        </li>
+        <li>
+            <p>Write the following list in HTML.</p>
+            <ul>
+                <li>
+                    Ubuntu
+                </li>
+                <li>
+                    Fedora
+                </li>
+                <li>
+                    Kubuntu
+                </li>
+            </ul>
+
+        </li>
+
+        <!-- Question No. 4-->
+        <li>
+            <p>How do you add an image named dinosaur.png on a webpage?</p>
+            The given image is added by using the &lt;img&gt; tag.<br />
+            <img src="images/dinosaur.png" alt="Dinosaur image" />
+
+        </li>
+
+        <!-- Question No. 5-->
+        <li>
+            <p>Create the following table using HTML</p>
+            <table>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                </tr>
+                <tr>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                    <td>Cell 6</td>
+                </tr>
+            </table>
+
+        </li>
+
+        <!-- Question No. 6-->
+        <li>
+            <p> Add a video to a webpage.</p>
+            <video width="500px" height="auto" controls>
+                <source src="images/video.mp4" type="video/mp4" />
+            </video>
+        </li>
+
+        <!-- Question No. 7-->
+        <li>
+            <p>Design a simple job application form with the following fields:</p>
+            <form onsubmit="store_values()">
+                <table class="form">
+                    <tr>
+                        <td><label for="name">Name</label></td>
+                        <td><input type="text" id="name" name="name" required /></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>
+                            <input type="radio" id="male" name="gender" value="Male" required />
+                            <label for="male">Male</label><br />
+                            <input type="radio" id="female" name="gender" value="Female" />
+                            <label for="female">Female</label><br />
+                            <input type="radio" id="pnts" name="gender" value="Prefer not to say" />
+                            <label for="pnts">Prefer not to say</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="contact">Contact Number</label></td>
+                        <td><input type="text" id="contact" name="contact" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td><input type="email" id="email" name="email" required /></td>
+                    </tr>
+                    <tr>
+                        <td>Area of Interest</td>
+                        <td>
+                            <input type="checkbox" id="web" name="area" value="Web Development" required />
+                            <label for="web">Web Development</label><br />
+                            <input type="checkbox" id="ml" name="area" value="Machine Learning" />
+                            <label for="ml">Machine Learning</label><br />
+                            <input type="checkbox" id="cyber" name="area" value="Cyber Security" />
+                            <label for="cyber">Cyber Security</label><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="resume">Resume</label></td>
+                        <td><input type="file" id="resume" name="resume" required /></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit" />
+            </form>
+        </li>
+
+        <!-- Question No. 8-->
+        <li>
+            <p>
+                Add a vector graphics image to an HTML page. Construct that image with simple circles and
+                rectangles and add your own creativity.
+            </p>
+            <svg width="500" height="500">
+                <text x="200" y="50" fill="#3C4048" font-weight="bolder">SVG</text>
+                <circle cx="100" cy="150" r="50" stroke-width="4" stroke="#3C4048" fill="#00ABB3"></circle>
+                <text x="300" y="150" fill="#3C4048" font-weight="bold">CIRCLE</text>
+                <rect x="50" y="300" width="100" height="150" stroke-width="4" stroke="#3C4048" fill="#00ABB3"></rect>
+                <text x="300" y="375" fill="#3C4048" font-weight="bold">RECTANGLE</text>
+            </svg>
+        </li>
+
+        <!-- Question No. 9-->
+        <li>
+            <p> Save the data (except resume) in local storage on submitting the form in Q8</p>
+            Click on the submit button to see the result here!
+            <table id="result">
+
+            </table>
+        </li>
+    </ol>
+
+    <script>
+        const store_values = () => {
+            if (typeof (Storage) !== "undefined") {
+
+            } else {
+                
+            }
+        }
+    </script>
+</body>
+
+</html>
