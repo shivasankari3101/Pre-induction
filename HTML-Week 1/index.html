@@ -34,7 +34,11 @@
         }
 
         input[type="submit"] {
-            margin: 20px 0;
+            margin: 20px 0 10px 0;
+        }
+
+        #confirmation{
+            color:green;
         }
 
         svg {
@@ -65,6 +69,8 @@
             <p>How do you write comments in the HTML code?</p>
             Comments are enclosed with <span><b>&lt;!-- and --&gt;</b></span>
         </li>
+
+        <!-- Question No. 4-->
         <li>
             <p>Write the following list in HTML.</p>
             <ul>
@@ -81,15 +87,15 @@
 
         </li>
 
-        <!-- Question No. 4-->
+        <!-- Question No. 5-->
         <li>
             <p>How do you add an image named dinosaur.png on a webpage?</p>
             The given image is added by using the &lt;img&gt; tag.<br />
-            <img src="images/dinosaur.png" alt="Dinosaur image" />
+            <img src="assets/dinosaur.png" alt="Dinosaur image" />
 
         </li>
 
-        <!-- Question No. 5-->
+        <!-- Question No. 6-->
         <li>
             <p>Create the following table using HTML</p>
             <table>
@@ -107,18 +113,18 @@
 
         </li>
 
-        <!-- Question No. 6-->
+        <!-- Question No. 7-->
         <li>
             <p> Add a video to a webpage.</p>
-            <video width="500px" height="auto" controls>
-                <source src="images/video.mp4" type="video/mp4" />
+            <video width="500" height="auto" controls>
+                <source src="assets/video.mp4" type="video/mp4" />
             </video>
         </li>
 
-        <!-- Question No. 7-->
+        <!-- Question No. 8-->
         <li>
             <p>Design a simple job application form with the following fields:</p>
-            <form onsubmit="store_values()">
+            <form id="form" onsubmit="store_values(event)">
                 <table class="form">
                     <tr>
                         <td><label for="name">Name</label></td>
@@ -161,9 +167,10 @@
                 </table>
                 <input type="submit" value="Submit" />
             </form>
+            <p id="confirmation"></p>
         </li>
 
-        <!-- Question No. 8-->
+        <!-- Question No. 9-->
         <li>
             <p>
                 Add a vector graphics image to an HTML page. Construct that image with simple circles and
@@ -178,23 +185,67 @@
             </svg>
         </li>
 
-        <!-- Question No. 9-->
-        <li>
+        <!-- Question No. 10-->
+        <li id="qn10">
             <p> Save the data (except resume) in local storage on submitting the form in Q8</p>
-            Click on the submit button to see the result here!
+            Click on the submit button to see the result here!<br /><br />
             <table id="result">
-
             </table>
+        </li>
+
+        <!-- Question No. 10-->
+        <li>
+            <p>Design a web page that shows the users location (latitude and longitude).</p>
+            <a href="location.html">Click here!</a>
         </li>
     </ol>
 
-    <script>
-        const store_values = () => {
+    <script>       
+
+     
+        if (typeof (Storage) !== "undefined") {
+            console.log("Supported");
+
+        } else {
+              console.log("Not supported");
+        }
+       
+
+        const store_values = (event) => {
+            event.preventDefault();
             if (typeof (Storage) !== "undefined") {
+                const confirm = document.getElementById("confirmation");
+                confirm.innerHTML = "Form submitted successfully!! ";
+                let name = document.getElementById("name").value;
+                let contact = document.getElementById("contact").value;
+                let email = document.getElementById("email").value;
+                let gender = document.querySelector('input[name="gender"]:checked').value;
+                let chkboxes = document.querySelectorAll('input[name="area"]:checked');
+                let areas = [];
+                for (let i = 0; i < chkboxes.length; i++) {
+                    areas.push(chkboxes[i].value);
+                }
+
+                localStorage.setItem("Name", name);
+                localStorage.setItem("Gender", gender);
+                localStorage.setItem("Contact Number", contact);
+                localStorage.setItem("Email", email);
+                localStorage.setItem("Areas of Interest", areas);
+
+                confirm.innerHTML += "The data are stored in local storage! Check <a href='#qn10'> Qn 10</a>";
+
+                const items = { ...localStorage };
+
+                let result = document.getElementById("result");
+                result.innerHTML += "<tr><th colspan=2>Items in local storage</th><tr>"
+                for (const key in items) {
+                    result.innerHTML += `<tr><td> ${key} </td><td> ${items[key]}</td></tr>`;
+                }
 
             } else {
-                
-            }
+                cconfirm.innerHTML += "Storage not supported in your browser";
+            }         
+            
         }
     </script>
 </body>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Location</title>
+</head>
+<body>
+    <button onclick="show_location()">Click to see your location</button>
+    <p id="result"></p>
+
+    <script>
+        const result = document.getElementById("result");
+        const show_location = () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(display_location, error_handler);
+            }
+            else {
+                result.innerHTML = "Geolocation API not supported by your browser";
+            }
+        }
+
+        const display_location = (pos) => {
+            result.innerHTML = `Latitude : ${pos.coords.latitude} <br/> Longitude : ${pos.coords.longitude}`;
+        }
+
+        const error_handler = (error) => {
+            switch (error.code) {
+                case error.POSITION_UNAVAILABLE: result.innerHTML = "Position unavailable";
+                    break;
+                case error.PERMISSION_DENIED: result.innerHTML = "User denied";
+                    break;
+                case error.TIMEOUT: result.innerHTML = "Time out";
+                    break;
+                case error.UNKNOWN_ERROR: result.innerHTML = "Some unknown error";
+            }
+        }
+    </script>
+</body>
+</html>
