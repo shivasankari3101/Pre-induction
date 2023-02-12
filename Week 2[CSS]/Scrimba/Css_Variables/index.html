@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>CSS Variables</title>
+    <style>
+        :root {
+            --bg: #00ABB3;
+            --text: #3C4048;
+            --bg2: #B2B2B2;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: var(--bg2);
+        }
+
+        body, #box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 10px;
+            background-color: var(--bg);
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Variables</h1>
+    <div id="box">
+        <h1>Box</h1>
+        <button>Click here</button>
+    </div>
+</body>
+</html>

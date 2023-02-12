@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0" />
+    <title>CSS Float</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        #header {
+            background: #44accf;
+            height: 50px;
+        }
+
+        #content {
+            background: #b7d84b;
+            height: 400px;
+            float: left;
+            width: 75%;
+        }
+
+        #navigation {
+            background: #e2a741;
+            height: 400px;
+            float: right;
+            width: 25%;
+        }
+
+        #footer {
+            background: #ee3e64;
+            height: 50px;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="header">Default</div>
+    <div id="content">Float</div>
+    <div id="navigation">Float</div>
+    <div id="footer">Clear</div>
+</body>
+</html>
