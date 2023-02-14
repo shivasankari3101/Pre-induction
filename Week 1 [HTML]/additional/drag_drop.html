@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Drag/Drop</title>
+    <style>
+        p{
+            font-size: 1.2em;
+        }
+        #box1{
+            width:200px;
+            height:200px;
+            border:solid 1px black;
+        }
+
+        span{
+            font-weight:bold;
+            font-size:1.2em;
+        }
+
+        img{
+            margin:20px;
+        }
+
+        button{
+            border:none;
+            border-radius:10px;
+            background-color:forestgreen;
+            color:whitesmoke;
+            padding:10px;
+
+        }
+    </style>
+</head>
+<body>
+    <h2>Drag and Drop</h2>
+    <p>It is used to grab an object from one location and drop it in another location.</p>
+
+    <div id="container">
+        <h2>Drag the cat inside the box!</h2>
+       <!-- The box where the image will be dropped-->
+        <div id="box1" ondrop="drop(event)" ondragover="allow_drop(event)"></div>
+        <div id="options">
+            <!--Images to be dragged-->
+            <img src="assets/cat.png" id="cat" draggable="true" ondragstart="drag(event)"/>  
+            <img src="assets/dog.png" id="dog" draggable="true" ondragstart="drag(event)"/>       
+            <img src="assets/squirrel.png" id="squirrel" draggable="true" ondragstart="drag(event)"/>
+        </div>
+
+        <button onclick="check()">Check</button>
+        <span id="result"></span>
+
+    <script>
+        const box = document.getElementById("box1");
+        const result = document.getElementById("result");
+
+       /* Using setData, the value of "animal" is set to the dragged element's id*/
+        function drag(ev){
+           ev.dataTransfer.setData("animal",ev.target.id);
+        }
+
+       /* Dropping elements in another location is not allowed! Hence,default action of the event is prevented*/
+        function allow_drop(ev){
+            ev.preventDefault();
+        }
+
+        /*If the box is empty, the box is appended with the image that is dragged. The image is identified by the getData() value */
+        function drop(ev) {
+            if (!box.hasChildNodes()) {
+                ev.preventDefault();
+                var animal = ev.dataTransfer.getData("animal");
+                box.appendChild(document.getElementById(animal));
+            }
+        }
+
+        /*A function to check if cat is placed or not*/
+        const check = () => {
+            console.log("hello from the function");
+            const ans = box.firstChild.getAttribute("id");
+            if ( ans == "cat") {
+                result.innerHTML = "Congrats! You are right!";
+            }
+            else {
+                result.innerHTML = `Oops! You have placed the ${ans}!`;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

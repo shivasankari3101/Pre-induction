@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Web Storage</title>
+    <style>
+        p,li{
+          font-size:1.2em;
+        }
+
+        input{
+            margin:10px 20px 10px 0;
+        }
+
+        form{
+            padding:2% 4%;
+            border:1px solid black;
+            width:500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Storage</h1>
+    <p>
+        Web Storage helps to store data locally in user's browser. There are two types of Storage:
+        <ul>
+            <li><b>Local Storage -</b>Data stored permanently</li>
+            <li><b>Session Storage -</b>Data get lost when browser tab is closed </li>
+        </ul>
+    </p>
+
+    <form>
+        <h2>Enter the key-value pair to store locally!</h2>
+        <input type="text" name="key" id="key" placeholder="Enter the key" />
+        <input type="text" name="value" id="value" placeholder="Enter the value" /><br />
+
+        <input type="submit" value="Store in local storage" onclick="store_local(event)" />
+        <input type="submit" value="Store in session storage" onclick="store_session(event)" />
+        <input type="submit" value="Clear"/><br />
+
+        <input type="submit" value="Clear Storage" onclick="clear_storage(event)" />
+    </form>
+
+    <script>
+        //Store the key-value pair in local storage
+        const store_local = (event) => {
+            event.preventDefault();
+            let key = document.getElementById("key").value;
+            let value = document.getElementById("value").value;
+
+            if (typeof (Storage) !== "undefined") {
+                localStorage.setItem(key, value);
+            }
+            else {
+                "Storage not supported by the browser!";
+            }
+        }
+
+        //Store the key-value pair in session storage
+        const store_session = (event) => {
+            event.preventDefault();
+            let key = document.getElementById("key").value;
+            let value = document.getElementById("value").value;
+
+            if (typeof (Storage) !== "undefined") {
+                sessionStorage.setItem(key, value);
+            }
+            else {
+                "Storage not supported by the browser!";
+            }
+        }
+
+        //Clear the local storage and session storage
+        const clear_storage = (event) => {
+            event.preventDefault();
+
+            //The storage items are stored in separate objects
+            const local_items = { ...localStorage };
+            const session_items = { ...sessionStorage };
+
+            //The storage items are removed using loop!
+            for (const key in local_items) {
+                localStorage.removeItem(key);
+            }
+
+            for (const key in session_items) {
+                sessionStorage.removeItem(key);
+            }
+        }
+    </script>
+</body>
+</html>

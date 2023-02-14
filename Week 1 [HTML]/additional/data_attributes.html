@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Data attributes</title>
+    <style>
+       p,code{
+           font-size:1.5em;
+       }
+
+       #boxes{
+           width:50%;
+           display:flex;
+           justify-content:space-between;
+           margin:5%;
+       }
+
+       .box{
+           width:100px;
+           height:100px;
+       }
+
+       /*Styles using data attributes*/
+
+       .box[data-color="red"]{
+           background-color:red;
+
+       }
+        .box[data-color="blue"] {
+            background-color: blue;
+        }
+        .box[data-color="green"] {
+            background-color: green;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Data(data-*) attributes</h1>
+    <ul>
+        <li><p>Data attributes allow us to give custom data attributes to an HTML element.</p></li>
+        <li>
+            <p>
+                <b>Syntax:</b>
+                <pre><code>data-&lt;string&gt;</code></pre>
+            </p>
+        </li>
+    </ul>
+
+
+    <h1>Click on any box to know its color!</h1>
+    <div id="boxes">
+        <div onclick="showColor(this);" class="box" data-color="red"></div>
+        <div onclick="showColor(this);" class="box" data-color="blue"></div>
+        <div onclick="showColor(this);" class="box" data-color="green"></div>
+    </div>
+
+
+    <script>
+        /*A function that displays the color of the box using the data attribute*/
+        const showColor = (box) => {
+            var color = box.getAttribute("data-color");
+            alert(`The color of the box is ${color}`);
+        }
+    </script>
+</body>
+</html>

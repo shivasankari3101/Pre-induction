@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Web workers</title>
+    <script src="script.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Web Workers</h1>
+    <p>Web Worker is a javascript running in the background without affecting the performance of the page!</p>
+    <p>Count : <span id="count"></span></p>
+    <button onclick="start();">Start timer</button><br /><br />
+    <button onclick="stop();">Stop timer</button>
+
+    <script>       
+
+       var w;
+       const start =()=>{
+          if(typeof(Worker)!=="undefined"){
+            w = new Worker("script.js");
+            w.onMessage = function(event){
+              document.getElementById("count").innerHTML = event.data;
+           }
+           console.log("Web worker supported");;         
+        }
+        else{
+
+            console.log("Web worker not supported!");
+        }
+       }
+
+        const stop = ()=>{
+            w.terminate();
+        }
+
+        
+    </script>
+</body>
+</html>
