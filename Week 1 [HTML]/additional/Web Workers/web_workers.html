@@ -19,7 +19,7 @@
        const start =()=>{
           if(typeof(Worker)!=="undefined"){
             w = new Worker("script.js");
-            w.onMessage = function(event){
+            w.onmessage = function(event){
               document.getElementById("count").innerHTML = event.data;
            }
            console.log("Web worker supported");;         
