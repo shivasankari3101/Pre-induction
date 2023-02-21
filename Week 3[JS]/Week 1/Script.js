@@ -128,7 +128,13 @@ const random = (lower, upper) => {
 //Output
 console.log("\nOutput for Qn-3:")
 for (let i = 0; i < ranges.length; i++) {
-    const out = random(ranges[i][0], ranges[i][1]);
+    let out;
+    if (random(ranges[i][0] < ranges[i][1])) {
+        out = random(ranges[i][0], ranges[i][1]);
+    }
+    else {
+        out = random(ranges[i][1], ranges[i][0]);
+    }
     console.log(out);
 }
 
