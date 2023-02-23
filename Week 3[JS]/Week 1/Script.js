@@ -30,14 +30,10 @@ const filter = (arr, filter) => {
     const out = [];
     const truth = [];
     const falsy = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (filter[i]) {
-            truth.push(arr[i]);
-        }
-        else {
-            falsy.push(arr[i]);
-        }
-    }
+
+    arr.forEach(function (item) {
+        item ? truth.push(item) : falsy.push(item);
+    })
 
     out.push(truth, falsy);
     return out;
@@ -46,10 +42,11 @@ const filter = (arr, filter) => {
 
 //Output
 console.log("Output for Qn-1:");
-for (let i = 0; i < filters.length; i++) {
-    const output = filter(arr, filters[i]);
-    console.log(`After applying filter${i + 1} : [[${output.join("],[")}]]`);
-}
+
+filters.forEach(function (item,index) {
+    const output = filter(arr, item);
+    console.log(`After applying filter${index + 1} : [[${output.join("],[")}]]`);
+})
 
 
 /*
@@ -127,15 +124,13 @@ const random = (lower, upper) => {
 
 //Output
 console.log("\nOutput for Qn-3:")
-for (let i = 0; i < ranges.length; i++) {
-    let out;
-    if (random(ranges[i][0] < ranges[i][1])) {
-        out = random(ranges[i][0], ranges[i][1]);
-    }
-    else {
-        out = random(ranges[i][1], ranges[i][0]);
-    }
+
+ranges.forEach(function (item) {
+    const num1 = item[0];
+    const num2 = item[1];
+
+    let out = (num1 <= num2) ? random(num1, num2) : random(num2, num1);
     console.log(out);
-}
+})
 
 
