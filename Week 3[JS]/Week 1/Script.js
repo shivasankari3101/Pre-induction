@@ -74,27 +74,26 @@ inputs[1] = "Red Orange";
 inputs[2] = "Black";
 
 
-//split() function of string is used to split the string based the delimitter and returns as array
-const strings=[];
-for (let i = 0; i < inputs.length; i++) {
-    //Each string is split into an array based on the delimitter " "
-    const string_arr = inputs[i].split(" ");
-    strings.push(string_arr);
-}
-
 //Function to decapitalize
 const decapitalize = (str) => {
     return str.charAt(0).toLowerCase() + str.slice(1);
 }
 
+
 //Output 
 console.log("\nOutput for Qn-2:")
-for (let i = 0; i < strings.length; i++) {
-    /*Concatenation of first string and decapitalized second string using template literal */
-    const out = `${strings[i][0]}${strings[i][1] ? decapitalize(strings[i][1]):" "}`;
-    console.log(out);
-}
 
+//split() function of string is used to split the string based the delimitter and returns as array
+inputs.forEach(function(input){
+  //Each string is split into an array based on the delimitter " "
+  const string_arr = input.split(" ");
+  let result ="";
+  string_arr.forEach(function(item,index){
+     result += index>0 ? decapitalize(item): item;
+  })
+
+  console.log(result);
+}) 
 
 /*
  * 
@@ -132,5 +131,14 @@ ranges.forEach(function (item) {
     let out = (num1 <= num2) ? random(num1, num2) : random(num2, num1);
     console.log(out);
 })
+
+
+/*
+*
+* Question 4
+* 
+* Code for array findBy, filterBy, sortBy inbuilt functions. Come up with your own custom
+prototype function.
+*/
 
 
