@@ -141,4 +141,57 @@ ranges.forEach(function (item) {
 prototype function.
 */
 
+let users = [
+    {name:"Shiva", age:"22", location:"Kanchi"},
+    {name:"Sankari", age:"18", location:"Trichy"},
+    {name:"Anu", age:"27", location:"Chennai"},
+    {name:"Priya", age:"19", location:"Trichy"}
+];
+
+//Prototype for findBy - It returns the index of the given key-value pair
+Array.prototype.findBy = function(key,value){
+    return this.findIndex(item => item[key] === value);
+}
+
+//Prototype for filterBy - It returns the elements that matches the filter given
+Array.prototype.filterBy = function(key,filter){  
+        return this.filter(item => item[key] === filter); 
+}
+
+//Prototype for sortBy - It sorts the array either in ascending or descending order based on the argument
+Array.prototype.sortBy = function(key,order){
+    return(
+    (order == "asc") ? this.sort((a,b)=>a[key]-b[key]) :
+    (order == "desc") ? this.sort((a,b)=>b[key]-a[key]) : 
+    console.error("The order parameter is not right")
+    );
+}
+
+
+// Functions calls
+
+//Users array
+console.log("Users array");
+console.log(users);
+
+//To find the index of the object in the array whose name is Priya
+console.log("\nfindby(): Index of the user whose name is Priya");
+console.log(users.findBy("name","Priya"));
+
+//To filter the users whose location is Trichy
+console.log("\nfilterby(): Users whose location is Trichy");
+console.log(users.filterBy("location","Trichy"));
+
+//To sort the given array based on the age in ascending order
+//Sorted the copy of the array. 
+console.log("\nsortby()-asc: Based on age");
+console.log(users.slice().sortBy("age","asc"));
+
+//To sort the given array based on the age in descending order
+//Sorted the copy of the array. 
+console.log("\nsortby()-desc: Based on age");
+console.log(users.slice().sortBy("age","desc"));
+
+
+
 
