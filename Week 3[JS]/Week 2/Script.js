@@ -10,7 +10,7 @@ let clock_ele = document.getElementById("clock");
 
 //This function formation the time as two digits
 const format = (time) =>{
-    return time<10? `0${time}` : time;
+    return time < 10 ? `0${time}` : time;
 }
 
 //This function displays the time in preferred format
@@ -35,7 +35,35 @@ setInterval(()=>{
  * Implement findby key & value in objects recursively.
  */
 
-//findby function that returns true if the key-value pair is found otherwise returns false
+let stud = {
+    name:"Ram",
+    age:15,
+    marks:{
+        eng:78,
+        tam:89,
+        mat:56,
+        sci:{
+            "sci-1":67,
+            "sci-2":45,
+        }
+    }
+};
+
+//This function finds the value for the given key in the given nested object
+let findby = function (key , obj) {
+    for(let prop in obj) {
+        if(prop === key) {
+            return obj[prop];
+        }
+        else if (typeof obj[prop] == "object" && obj[prop]!=null) { 
+            return findby(key, obj[prop]);
+        }
+    }
+}
+
+//Find the marks for sci-1 which is nested in the object
+console.log("Output for Qn-2:");
+console.log(`Marks obtained in sci-1: ${findby("sci-1",stud)}`);
 
 
 
@@ -59,8 +87,8 @@ an object.
  */
 
     let obj = { a: 1, b: '2', c: 3 };
-    console.log("The object now:");
-    console.log(obj);
+
+    console.log("\nOutput for Qn-3:");
 
     //This function removes the property by the key value
     const remove = (key) => {
@@ -70,7 +98,24 @@ an object.
     }
 
     remove('b');
-    remove('c');   
+    remove('c');
+    
+    let arr = [
+        {name:"Shiva",age:13},
+        {name:"Sankari",age:14},
+        {name:"Priya",age:22}
+    ]
+
+    //This function removes the property from the array of objects
+    const remove1 = (key, value, arr) =>{
+        const i = arr.findIndex(item=> key in item && item[key] === value);
+        delete arr[i][key];    
+        console.log(`The array after removing "${key}:${value}":`);
+        console.log(arr);
+    }
+
+    //Remove age:14 from the array of objects
+    remove1("age",14,arr);
 
 
 /**
@@ -91,10 +136,10 @@ an object.
  */
 
   //Arrays
-  let arr = [];
-  arr[0]= [1, 2, 2, 3, 4, 4, 5];
-  arr[1] = [6,6,8,8,9];
-  arr[3] = [1,2,3,4];
+  let arr1 = [];
+  arr1[0]= [1, 2, 2, 3, 4, 4, 5];
+  arr1[1] = [6,6,8,8,9];
+  arr1[3] = [1,2,3,4];
 
   //Function to filter the duplicates
   const filter_dup = (arr) =>{
@@ -117,7 +162,8 @@ an object.
 
 
   //Execution of filter function for each array
-  arr.forEach(function(current){
+  console.log("\nOutput for Qn-4:");
+  arr1.forEach(function(current){
     console.log("\nArray before removing duplicates:");
     console.log(current);
     console.log("\nArray after removing duplicates:")
