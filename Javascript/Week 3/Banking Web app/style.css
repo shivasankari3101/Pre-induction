@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar{
+    background-color: #116530;
+    color: #E8E8CC;
+    padding: 1rem;
+    text-align: center;
+}
+
+#user_page{
+    width: 100%;
+    display: flex;
+    /* display: none; */
+}
+
+#profile{
+    width: 50%;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile img{
+    width: 200px;
+    height: 200px;
+}
+
+#profile table{
+    min-width: 60%;    
+    transform: translateX(15%);
+}
+
+#profile table td{
+    padding: 1%;
+    width: 50%;
+}
+
+
+#reg_login{
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#reg_login h1{
+    color: #116530;
+}
+
+#reg_login>form{
+    border: 1px solid #383838;
+    padding: 3% 5%;
+    width: 20%;
+}
+
+input{
+    margin: 5% 0;
+    border: 0;
+    border-bottom: 1px solid #B2B2B2;
+    outline: 0;
+    width: 100%;
+}
+
+input{
+    font-size: 1rem;
+}
+
+input[type="submit"]{
+    padding: 5%;
+    background-color: #116530;
+    color: #E8E8CC;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#banking{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#balance {
+    display: inline-block;
+    padding: 4%;
+    background-color: #116530;
+    color: #E8E8CC;
+}
+
+#deposit_withdraw{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#deposit_withdraw>form{
+    border: 1px solid #383838;
+    padding: 3% 5%;
+}
+
+#logout{
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    padding: 1% 2%;
+    background-color: #116530;
+    color: #E8E8CC;
+    border-radius: 5px;
+    cursor: pointer;
+}

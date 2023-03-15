@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <h1>BANKING WEB APPLICATION</h1>
+    </nav>
+
+    <!-- Main section  -->
+    <main>
+        <div id= "reg_login">
+            <form id="login" onsubmit="verifyUser(event)">
+                <h1>Sign In</h1>
+                <input type="text" placeholder="Email" name="login_email" id="login_email" required/><br>
+                <input type="password" placeholder="Password" name="login_password" id="login_password" required/><br>
+                <input type="submit" value="Login"/>
+            </form>
+    
+            <form id="register" onsubmit="registerUser(event)">
+                <h1>Sign Up</h1>
+                <input type="text" placeholder="Name" name="name" id="name" required/><br>
+                <input type="email" placeholder="Email" name="email" id="email" required/><br>
+                <input type="date" placeholder="Date of Birth" name="dob" id="dob" required/><br>
+                <input type="number" placeholder="Initial amount" name="initial" id="initial" required/><br>
+                <input type="password" placeholder="Password" name="password" id="password" required/><br>
+                <input type="submit" value="Register"/>
+            </form>
+        </div>
+
+        <div id="user_page">
+            <div id="profile">
+                <img src="assets/user_img.png" alt = "user image">
+                <h1 id="username"></h1>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td class="userDetails"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td class="userDetails" id="currentUser"></td>
+                    </tr>
+                    <tr>
+                        <td>DOB</td>
+                        <td class="userDetails"></td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td class="userDetails"></td>
+                    </tr>
+                </table>
+                
+            </div>
+
+            <div id="banking">
+               <div id="balance">Balance: ₹<span class="userDetails" id="bal_amt"></span></div>
+               <div id="deposit_withdraw">
+                    <div onsubmit="deposit_amt(event)">
+                        <form id="deposit">
+                            <h2>Deposit</h2>
+                            <input type="number" placeholder="Enter the deposit amount" name="deposit_amt" id="deposit_amt" required/><br>
+                            <input type="submit" value="Deposit"/>
+                        </form>
+                    </div>
+                   <div onsubmit="withdraw_amt(event)">
+                        <form id="withdraw">
+                            <h2>Withdrawl</h2>
+                            <input type="number" placeholder="Enter the withdraw amount" name="withdraw_amt" id="withdraw_amt" required/><br>
+                            <input type="submit" value="Withdraw"/>
+                        </form>
+                   </div>
+               </div>
+            </div>
+
+            <button id="logout" onclick="logout(event)">Log out</button>
+        </div>
+    </main>
+
+    <script src="register.js"></script>
+    <script src="login.js"></script>
+    <script src="user.js"></script>   
+
+</body>
+</html>
