@@ -1,5 +1,23 @@
 // Users array that contain the information of all the users
-let users = [];
+let users = [
+    {
+        name : "Shiva",
+        email : "s@gmail.com",
+        dob: "18-2-2021",
+        calcAge(){
+            this.age = Math.floor((new Date() - new Date(dob))/(1000*60*60*24*365));
+            return this.age;
+        },
+        password : "Sh31****",
+        balance: 800,
+        savings1 : {
+            balance : 0
+        },
+        savings2 : {
+            balance : 0
+        }
+    }
+];
 
 
 //Create an "user" object
@@ -23,7 +41,13 @@ let User = function({
             return this.age;
         },
         password,
-        balance: +initial
+        balance: +initial,
+        savings1 : {
+            balance : 0
+        },
+        savings2 : {
+            balance : 0
+        }
     }
 
     return newUser;
@@ -48,9 +72,13 @@ let registerUser = e =>{
 
     //The object created for the new user is added to the users array
     users.push(newUser);
+    // addUser(newUser);
     alert("Registered successfully!");
 
     //The register form is cleared
     document.getElementById("register").reset();
+
+    //Redirect to login page
+    showForm(document.getElementById("logInButton"));
 }
 

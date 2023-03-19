@@ -22,7 +22,7 @@ let verifyUser = (e) => {
         showUser(user);
     }
     else{
-        alert("Login failed");
+        alert("Email or password is incorrect");
     }
 
     //The login form is cleared
@@ -44,6 +44,10 @@ let logout = (e) =>{
     //Redirected to the login page
     document.getElementById("reg_login").style.display = "flex";
     document.getElementById("user_page").style.display = "none";
+
+      //Show the right button(LOgIn or Logout)
+      document.getElementById("logInButton").style.display = "block";
+      document.getElementById("logout").style.display = "none";
 
   
 }
