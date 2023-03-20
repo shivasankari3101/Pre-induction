@@ -19,6 +19,10 @@ let users = [
     }
 ];
 
+//Array of users is stored in local storage as string
+if( !localStorage.getItem("users") ){
+    storeUsersArray(users);
+}
 
 //Create an "user" object
 let User = function({
@@ -68,10 +72,18 @@ let registerUser = e =>{
     user.password = document.getElementById("password").value;
 
     //An object is created based on the details entered in the register form
-    let newUser = new User(user);
+    let newUser = new User(user);    
 
-    //The object created for the new user is added to the users array
-    users.push(newUser);
+    //The array is retrieved from the local storage
+    let usersArray = getUsersArray();
+
+    //New object is added to the users array
+    usersArray.push(newUser);
+
+    //Modified array is stored in the local storage again
+    storeUsersArray(usersArray);
+    
+
     // addUser(newUser);
     alert("Registered successfully!");
 

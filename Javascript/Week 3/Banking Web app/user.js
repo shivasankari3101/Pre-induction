@@ -46,7 +46,7 @@ const deposit_amt = (e) =>{
     let deposit_amount = +document.getElementById("deposit_amt").value;
 
     //The user of the email is found
-    let user = users.find( user => (currentUser === user.email));
+    let user = getUsersArray().find( user => (currentUser === user.email));
 
     //The account to be deposited is identified
     let account = checkAccount(document.getElementsByName("deposit_account"));
@@ -87,7 +87,7 @@ const withdraw_amt = (e) =>{
 
     //The current user is identified by the email
     let currentUser = document.getElementById("currentUser").innerHTML;
-    let user = users.find( user => (currentUser === user.email));
+    let user = getUsersArray().find( user => (currentUser === user.email));
 
     //The withdraw amount is accessed and is converted to Number
     let withdraw_amount = +document.getElementById("withdraw_amt").value; 

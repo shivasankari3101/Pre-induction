@@ -129,7 +129,7 @@ input{
 }
 
 #login_password, #password{
-    width: 100%;
+    width: fit-content
 }
 
 input{

@@ -55,7 +55,7 @@ let findby = function (key , obj) {
         if(prop === key) {
             return obj[prop];
         }
-        else if (typeof obj[prop] == "object" && obj[prop] != null) { 
+        else if (typeof obj[prop] == "object") { 
             return findby(key, obj[prop]);
         }
     }

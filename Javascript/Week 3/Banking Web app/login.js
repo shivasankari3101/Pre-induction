@@ -1,7 +1,7 @@
 //User authentication
 let checkUser = (email, password) => {
     //Checks if the user exists with the given credentials
-    return users.find( user => (email === user.email) && (password === user.password));
+    return getUsersArray().find( user => (email === user.email) && (password === user.password));
 }
 
 //Get login credentials and verify
