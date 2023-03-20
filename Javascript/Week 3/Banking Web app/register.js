@@ -5,7 +5,7 @@ let users = [
         email : "s@gmail.com",
         dob: "18-2-2021",
         calcAge(){
-            this.age = Math.floor((new Date() - new Date(dob))/(1000*60*60*24*365));
+            this.age = Math.floor((new Date() - new Date("2-18-2021"))/(1000*60*60*24*365));
             return this.age;
         },
         password : "Sh31****",

@@ -3,6 +3,7 @@
     --green : #116530;
     --lightGrey : #E8E8CC;
     --darkGrey : #B2B2B2;
+    --lightBlack : #383838;
 }
 
 body{
@@ -83,7 +84,7 @@ body{
     position: absolute;
     top: 15%;
     right: 5%; 
-    border: 1px solid #383838;
+    border: 1px solid var(--lightBlack);
     padding: 2%;
     display: none;   
 }
@@ -112,7 +113,7 @@ body{
 }
 
 #reg_login>form{
-    border: 1px solid #383838;
+    border: 1px solid var(--lightBlack);
     margin-bottom: 3%;
     padding: 3% 5%;
     width: 20%;
@@ -177,7 +178,7 @@ input[type="submit"]:disabled{
 }
 
 #deposit_withdraw>form{
-    border: 1px solid #383838;
+    border: 1px solid var(--lightBlack);
     padding: 3% 5%;
 }
 
@@ -187,7 +188,7 @@ input[type="submit"]:disabled{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    border: 1px solid #383838;
+    border: 1px solid var(--lightBlack);
     margin: 5%;
 }
 
@@ -203,13 +204,4 @@ input[type="submit"]:disabled{
 }
 
 
-/* #logout{
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    padding: 1% 2%;
-    background-color: var(--green);
-    color: var(--lightGrey);
-    border-radius: 5px;
-    cursor: pointer;
-} */
+
