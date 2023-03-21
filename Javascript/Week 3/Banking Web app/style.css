@@ -21,7 +21,7 @@ body{
     align-items: center;
 }
 
-#logInButton, #logout{
+#login, #logout{
     padding: 1% 2.5%;
     height: fit-content;
     background-color: var(--lightGrey);
@@ -164,7 +164,7 @@ input[type="submit"]:disabled{
     justify-content: space-evenly;
 }
 
-#balance, #savings1_balance, #savings2_balance {
+#balance, .savings_bal {
     display: inline-block;
     padding: 4%;
     background-color: var(--green);
@@ -198,7 +198,7 @@ input[type="submit"]:disabled{
 }
 
 
-#savings1_balance, #savings2_balance{
+.savings_bal{
     padding: 2.5%;
     margin-bottom: 5%;
 }

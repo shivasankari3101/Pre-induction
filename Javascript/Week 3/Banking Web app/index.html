@@ -12,20 +12,23 @@
     <!-- Header -->
     <nav class="navbar">
         <h1>BANKING WEB APPLICATION</h1>
-        <button id="logInButton" data-function="login" class="redirect" onclick="showForm(this)">Login</button>
+        <button id="login" data-function="login" class="redirect" onclick="showForm(this)">Login</button>
         <button id="logout" onclick="logout(event)">Logout</button>
     </nav>
 
     <!-- Main section  -->
     <main>
+        <!-- Section to display home and forms -->
         <div id="reg_login">
+
+            <!-- Constraints for Sign Up form -->
             <div id="warningSignUp">
                 <p>Enter</p>
                 <ul>
-                    <li> <p id="nameValidator" class="validator">Maximum length of name is 15</p></li>
-                    <li> <p id="emailValidator" class="validator">A valid email id</p></li>
-                    <li> <p id="dobValidator" class="validator">Minimum age : 2 years</p></li>
-                    <li> <p id="amtValidator" class="validator">Initial deposit must be atleast ₹500</p></li>
+                    <li> <p class="nameValidator validator">Maximum length of name is 15</p></li>
+                    <li> <p class="emailValidator validator">A valid email id</p></li>
+                    <li> <p class="dobValidator validator">Minimum age : 2 years</p></li>
+                    <li> <p class="amtValidator validator">Initial deposit must be atleast ₹500</p></li>
                     <li>
                         <p>
                             Password must have
@@ -38,15 +41,19 @@
                         </p>
                     </li>
                     
-                </ul>            
-              
-               
+                </ul>        
             </div>
+
+            <!-- Constraints for Sign In form -->
             <div id="warningSignIn">
-                <p id="emailValidatorSignIn" class="validator">Enter a valid email id</p>
+                <p class="emailValidator validator">Enter a valid email id</p>
             </div>
+
+            <!-- Home section -->
             <img src="assets/logo.png" alt="logo" id="logo" class="temp">;
-            <form id="login" class="temp" onsubmit="verifyUser(event)">
+
+            <!-- Login Form -->
+            <form id="loginForm" class="temp" onsubmit="verifyUser(event)">
                 <h1>Sign In</h1>
                 <input type="text" placeholder="Email" name="login_email" id="login_email" class="loginInput" oninput="validateSignIn(event)" required/><br>
                 <input type="password" placeholder="Password" name="login_password" id="login_password" class="loginInput" oninput="validateSignIn(event)" required/>
@@ -55,20 +62,24 @@
                 <p>Don't have an account? <u class="redirect" data-function="signup" onclick="showForm(this)">Sign Up here</u></p>
             </form>
     
-            <form id="register" class="temp" onsubmit="registerUser(event)">
+            <!-- Register form -->
+            <form id="registerForm" class="temp" onsubmit="registerUser(event)">
                 <h1>Sign Up</h1>
                 <input type="text" placeholder="Name" name="name" id="name" maxlength="15" oninput="validateSignUp(event)" class="signUpInput" required/><br>
                 <input type="email" placeholder="Email" name="email" id="email" oninput="validateSignUp(event)" class="signUpInput" required/><br>
                 <input type="date" placeholder="Date of Birth" name="dob" id="dob" onchange="validateSignUp(event)" class="signUpInput" required/><br>
                 <input type="number" placeholder="Initial amount" name="initial" id="initial" oninput="validateSignUp(event)" class="signUpInput" required/><br>
-                <input type="password" placeholder="Password" name="password" id="password" maxlength="8" oninput="validateSignUp(event)" class="signUpInput" required/>
+                <input type="password" placeholder="Password" name="password" id="password" minlength="8" oninput="validateSignUp(event)" class="signUpInput" required/>
                 <i class="fa-solid fa-eye-slash" onclick="showPassword(this)"></i><br>
                 <input type="submit" value="Register" id="signInSubmit" disabled/>
                 <p>Already have an account or want to signIn? <u class="redirect" data-function="login" onclick="showForm(this)">Click here</u></p>
             </form>
         </div>
 
+        <!-- Page redirected on successful login -->
         <div id="user_page">
+
+            <!-- User details  -->
             <div id="profile">
                 <img src="assets/user_img.png" alt = "user image">
                 <h1 id="username"></h1>
@@ -93,42 +104,48 @@
                 
             </div>
 
+            <!-- Deposit and Withdraw -->
             <div id="banking">
                <div id="balance">Balance: ₹<span class="userDetails" id="bal_amt"></span></div>
                <div id="deposit_withdraw">
+
+                    <!-- Deposit form -->
                     <div onsubmit="deposit_amt(event)">
                         <form id="deposit">
                             <h2>Deposit</h2>
-                            <input type="number" placeholder="Enter the deposit amount" name="deposit_amt" id="deposit_amt" required/><br>
-                            <input type="radio" id="deposit_current" name="deposit_account" value="current"><label for="deposit_current">Current Account</label><br>
-                            <input type="radio" id="deposit_savings1" name="deposit_account" value="savings1"><label for="deposit_savings1">Savings 1 Account</label><br>
-                            <input type="radio" id="deposit_savings2" name="deposit_account" value="savings2"><label for="deposit_savings2">Savings 2 Account</label><br>
-                            <input type="submit" value="Deposit"/>
+                            <input type="number" placeholder="Enter the deposit amount" name="deposit_amt" id="deposit_amt" required oninput="validateDeposit()"/><br>
+                            <input type="radio" id="deposit_current" name="deposit_account" value="current" onchange="validateDeposit()"><label for="deposit_current"> Current Account</label><br>
+                            <input type="radio" id="deposit_savings1" name="deposit_account" value="savings1" onchange="validateDeposit()"><label for="deposit_savings1"> Savings 1 Account</label><br>
+                            <input type="radio" id="deposit_savings2" name="deposit_account" value="savings2" onchange="validateDeposit()"><label for="deposit_savings2"> Savings 2 Account</label><br>
+                            <input type="submit" id="depositSubmit" value="Deposit" disabled/>
                         </form>
                     </div>
+
+                    <!-- Withdraw form -->
                    <div onsubmit="withdraw_amt(event)">
                         <form id="withdraw">
                             <h2>Withdrawl</h2>
-                            <input type="number" placeholder="Enter the withdraw amount" name="withdraw_amt" id="withdraw_amt" required/><br>
-                            <input type="radio" id="current" name="withdraw_account" value="current"><label for="current">Current Account</label><br>
-                            <input type="radio" id="savings1" name="withdraw_account" value="savings1"><label for="savings1">Savings 1 Account</label><br>
-                            <input type="radio" id="savings2" name="withdraw_account" value="savings2"><label for="savings2">Savings 2 Account</label><br>
-                            <input type="submit" value="Withdraw"/>
+                            <input type="number" placeholder="Enter the withdraw amount" name="withdraw_amt" id="withdraw_amt" required oninput="validateWithdraw()"/><br>
+                            <input type="radio" id="current" name="withdraw_account" value="current" onchange="validateWithdraw()"><label for="current"> Current Account</label><br>
+                            <input type="radio" id="savings1" name="withdraw_account" value="savings1" onchange="validateWithdraw()"><label for="savings1"> Savings 1 Account</label><br>
+                            <input type="radio" id="savings2" name="withdraw_account" value="savings2" onchange="validateWithdraw()"><label for="savings2"> Savings 2 Account</label><br>
+                            <input type="submit" id="withdrawSubmit" value="Withdraw" disabled/>
                         </form>
                    </div>
                </div>
             </div>
 
+            <!-- Savings information -->
             <div id="savings">
                 <h1>SAVINGS ACCOUNTS</h1>
-                <div id="savings1_balance">Savings 1 Balance: ₹<span class="userDetails" id="sav1bal_amt"></span></div>
-                <div id="savings2_balance">Savings 2 Balance: ₹<span class="userDetails" id="sav2bal_amt"></span></div>
+                <div class="savings_bal">Savings 1 Balance: ₹<span class="userDetails" id="sav1bal_amt"></span></div>
+                <div class="savings_bal">Savings 2 Balance: ₹<span class="userDetails" id="sav2bal_amt"></span></div>
             </div>
 
         </div>
     </main>
 
-    <script src="jsonStringify.js"></script>
+    <script src="usersArray.js"></script>
     <script src="register.js"></script>
     <script src="idb.js"></script>
     <script src="login.js"></script>

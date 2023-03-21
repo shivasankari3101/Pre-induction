@@ -20,7 +20,7 @@ const validateSignIn = (e) =>{
     const input = e.target.value;
 
     //Constraint
-    const emailValidator = document.querySelector("#emailValidatorSignIn");
+    const emailValidator = document.querySelectorAll(".emailValidator")[1];
 
     //Email validation
     if(element === "login_email"){
@@ -46,10 +46,10 @@ const validateSignUp = (e) => {
     const input = e.target.value;
 
     //Constraints
-    const nameValidator = document.querySelector("#nameValidator");
-    const emailValidator = document.querySelector("#emailValidator");
-    const dobValidator = document.querySelector("#dobValidator");
-    const amtValidator = document.querySelector("#amtValidator");
+    const nameValidator = document.querySelectorAll(".nameValidator")[0];
+    const emailValidator = document.querySelectorAll(".emailValidator")[0];
+    const dobValidator = document.querySelectorAll(".dobValidator")[0];
+    const amtValidator = document.querySelectorAll(".amtValidator")[0];
     const passwordValidators = document.querySelectorAll(".passwordValidator");
 
     //Validation for each field
@@ -86,7 +86,7 @@ const validateSignUp = (e) => {
             //Password should contain atleast one Uppercase letter, one digit, one Special character and length 8
 
             //8 characters
-            ( (/.{8}/).test(input) ) ? passwordValidators[0].classList.add("correct") : passwordValidators[0].classList.remove("correct");
+            ( (/.{8,}/).test(input) ) ? passwordValidators[0].classList.add("correct") : passwordValidators[0].classList.remove("correct");
 
             //Atleast one uppercase letter
             ( (/([A-Z])/).test(input) ) ? passwordValidators[1].classList.add("correct") : passwordValidators[1].classList.remove("correct");
@@ -116,6 +116,25 @@ const showPassword = (ele) =>{
     const password = ele.previousElementSibling;
     ele.classList.toggle("fa-eye");
     password.type = ( password.type === "password" ) ? "text" : "password";
+}
+
+
+//Validate deposit and withdraw form
+const validateDeposit = () =>{
+    let depositInput = document.getElementById("deposit_amt").value;
+    let acccount = checkAccount(document.getElementsByName("deposit_account"));
+
+    let depositSubmit = document.getElementById("depositSubmit");
+    (depositInput !== "" && acccount !== null) ? depositSubmit.disabled = false : depositSubmit.disabled = true;
+}
+
+//Validate deposit and withdraw form
+const validateWithdraw = () =>{
+    let withdrawInput = document.getElementById("withdraw_amt").value;
+    let acccount = checkAccount(document.getElementsByName("withdraw_account"));
+
+    let withdrawSubmit = document.getElementById("withdrawSubmit");
+    (withdrawInput !== "" && acccount !== null) ? withdrawSubmit.disabled = false : withdrawSubmit.disabled = true;
 }
 
 

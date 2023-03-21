@@ -1,7 +1,7 @@
 //User authentication
 let checkUser = (email, password) => {
     //Checks if the user exists with the given credentials
-    return getUsersArray().find( user => (email === user.email) && (password === user.password));
+    return getUsersArray().find( user => (email.toLowerCase() === user.email) && (password === user.password));
 }
 
 //Get login credentials and verify
@@ -23,10 +23,12 @@ let verifyUser = (e) => {
     }
     else{
         alert("Email or password is incorrect");
+        document.getElementsByClassName("emailValidator")[1].classList.remove("correct");
+
     }
 
     //The login form is cleared
-    document.getElementById("login").reset();
+    document.getElementById("loginForm").reset();
 }
 
 
@@ -45,9 +47,11 @@ let logout = (e) =>{
     document.getElementById("reg_login").style.display = "flex";
     document.getElementById("user_page").style.display = "none";
 
-      //Show the right button(LOgIn or Logout)
-      document.getElementById("logInButton").style.display = "block";
-      document.getElementById("logout").style.display = "none";
+    //Show the right button(LOgIn or Logout)
+    document.getElementById("login").style.display = "block";
+    document.getElementById("logout").style.display = "none";
+    document.getElementsByClassName("emailValidator")[1].classList.remove("correct");
+
 
   
 }
