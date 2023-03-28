@@ -7,7 +7,6 @@ const checkEmpty = (inputs) =>{
             break;
         }
     }
-
     return flag;
 }
 
