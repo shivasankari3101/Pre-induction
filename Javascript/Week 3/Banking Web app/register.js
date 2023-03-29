@@ -26,12 +26,16 @@ let User = function({
         age,
         password,
         balance: +initial,
-        savings1 : {
-            balance : 0
-        },
-        savings2 : {
-            balance : 0
-        }
+        savings :[
+            {
+                id:1,
+                balance:0
+            },
+            {
+                id:2,
+                balance:0
+            }
+        ]
     }
 
     return newUser;
@@ -52,43 +56,43 @@ let registerUser = e =>{
     user.password = document.getElementById("password").value;
 
     //Check if the user email already exists
-    let checkUser = getUsersArray().find(user => user.email === user.email.toLowerCase());
+    let checkUser = getUsersArray().find( item => item.email.toLowerCase() === user.email.toLowerCase());
     
     if(!checkUser){
-        //An object is created based on the details entered in the register form
-        let newUser = new User(user);    
+         //An object is created based on the details entered in the register form
+         let newUser = new User(user);    
 
-        //The array is retrieved from the local storage
-        let usersArray = getUsersArray();
-
-        //New object is added to the users array
-        usersArray.push(newUser);
-
-        //Modified array is stored in the local storage again
-        storeUsersArray(usersArray);
-        
-
-        // addUser(newUser);
-        alert("Registered successfully!");
-
-        //Make the constraints red
-        let constraints = document.querySelectorAll(".validator");
-        for(let constraint of constraints){
-            constraint.style.color = "red";
-        }
-
-        //The register form is cleared
-        document.getElementById("registerForm").reset();
-
-        //Redirect to login page
-        showForm(document.getElementById("login"));
+         //The array is retrieved from the local storage
+         let usersArray = getUsersArray();
+ 
+         //New object is added to the users array
+         usersArray.push(newUser);
+ 
+         //Modified array is stored in the local storage again
+         storeUsersArray(usersArray);
+         
+ 
+         // addUser(newUser);
+         alert("Registered successfully!");
+ 
+         //Make the constraints red
+         let constraints = document.querySelectorAll(".validator");
+         for(let constraint of constraints){
+             constraint.style.color = "red";
+         }
+ 
+         //The register form is cleared
+         document.getElementById("registerForm").reset();
+ 
+         //Redirect to login page
+         showForm(document.getElementById("login"));
     }
     else{
-        alert("The user already exists!");
-        
-        //The register form is cleared
-        document.getElementById("registerForm").reset();
+         alert("User registered already");
+         //The register form is cleared
+         document.getElementById("registerForm").reset();
     }
+   
 
    
 }

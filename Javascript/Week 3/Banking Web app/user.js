@@ -19,8 +19,8 @@ const showUser = (user) =>{
     userDetails[2].innerHTML = user.dob;
     userDetails[3].innerHTML = user.age;
     userDetails[4].innerHTML = user.balance;
-    userDetails[5].innerHTML = user.savings1.balance;
-    userDetails[6].innerHTML = user.savings2.balance;
+    userDetails[5].innerHTML = user.savings.find(sav => sav.id === 1).balance;
+    userDetails[6].innerHTML = user.savings.find(sav => sav.id === 2).balance;
 }
 
 //Check the account for deposit/withdraw
@@ -63,13 +63,15 @@ const deposit_amt = (e) =>{
             break;
         }
         case "savings1": {
-            users[userIndex].savings1.balance += deposit_amount;
-            userDetails[5].innerHTML = users[userIndex].savings1.balance;
+            let savings = users[userIndex].savings.find(sav => sav.id === 1);
+            savings.balance +=deposit_amount;
+            userDetails[5].innerHTML = savings.balance;
             break;
         }
         case "savings2":{
-            users[userIndex].savings2.balance += deposit_amount;
-            userDetails[6].innerHTML = users[userIndex].savings2.balance;
+            let savings = users[userIndex].savings.find(sav => sav.id === 2);
+            savings.balance +=deposit_amount;
+            userDetails[6].innerHTML = savings.balance;
             break;
         }
     }
@@ -79,6 +81,8 @@ const deposit_amt = (e) =>{
 
     //Cleared the deposit form
     document.getElementById("deposit").reset();
+    document.getElementById("depositSubmit").disabled = true;
+   
 }
 
 
@@ -111,13 +115,15 @@ const withdraw_amt = (e) =>{
             break;
         }
         case "savings1": {
-            users[userIndex].savings1.balance >= withdraw_amount ? users[userIndex].savings1.balance -= withdraw_amount : alert("No sufficient balance in savings 1 acccount");
-            userDetails[5].innerHTML = users[userIndex].savings1.balance;
+            let savings = users[userIndex].savings.find(sav => sav.id === 1);
+            savings.balance >= withdraw_amount ? savings.balance -= withdraw_amount : alert("No sufficient balance in savings 1 acccount");
+            userDetails[5].innerHTML =savings.balance;
             break;
         }
         case "savings2":{
-            users[userIndex].savings2.balance >= withdraw_amount ? users[userIndex].savings2.balance -= withdraw_amount : alert("No sufficient balance in savings 2 acccount");
-            userDetails[6].innerHTML = users[userIndex].savings2.balance;
+            let savings = users[userIndex].savings.find(sav => sav.id === 2);
+            savings.balance >= withdraw_amount ? savings.balance -= withdraw_amount : alert("No sufficient balance in savings 2 acccount");
+            userDetails[6].innerHTML = savings.balance;
             break;
         }
     }
@@ -127,6 +133,7 @@ const withdraw_amt = (e) =>{
 
     //Cleared the deposit form
     document.getElementById("withdraw").reset();
+    document.getElementById("withdrawSubmit").disabled = true;
 }
 
 
