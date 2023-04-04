@@ -25,7 +25,7 @@ let User = function({
         dob: `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`,
         age,
         password,
-        balance: +initial,
+        balance: Number(initial),
         savings :[
             {
                 id:1,

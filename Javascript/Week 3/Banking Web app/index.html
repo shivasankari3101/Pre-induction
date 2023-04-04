@@ -68,7 +68,7 @@
                 <input type="text" placeholder="Name" name="name" id="name" maxlength="15" oninput="validateSignUp(event)" class="signUpInput" required/><br>
                 <input type="email" placeholder="Email" name="email" id="email" oninput="validateSignUp(event)" class="signUpInput" required/><br>
                 <input type="date" placeholder="Date of Birth" name="dob" id="dob" onchange="validateSignUp(event)" class="signUpInput" required/><br>
-                <input type="number" placeholder="Initial amount" name="initial" id="initial" oninput="validateSignUp(event)" class="signUpInput" required/><br>
+                <input type="text" placeholder="Initial amount" name="initial" id="initial" oninput="validateSignUp(event)" class="signUpInput" required/><br>
                 <input type="password" placeholder="Password" name="password" id="password" minlength="8" oninput="validateSignUp(event)" class="signUpInput" required/>
                 <i class="fa-solid fa-eye-slash" onclick="showPassword(this)"></i><br>
                 <input type="submit" value="Register" id="signInSubmit" disabled/>
@@ -113,7 +113,7 @@
                     <div onsubmit="deposit_amt(event)">
                         <form id="deposit">
                             <h2>Deposit</h2>
-                            <input type="number" placeholder="Enter the deposit amount" name="deposit_amt" id="deposit_amt" required oninput="validateDeposit()"/><br>
+                            <input type="text" placeholder="Enter the deposit amount" name="deposit_amt" id="deposit_amt" required oninput="validateDeposit()"/><br>
                             <input type="radio" id="deposit_current" name="deposit_account" value="current" onchange="validateDeposit()"><label for="deposit_current"> Current Account</label><br>
                             <input type="radio" id="deposit_savings1" name="deposit_account" value="savings1" onchange="validateDeposit()"><label for="deposit_savings1"> Savings 1 Account</label><br>
                             <input type="radio" id="deposit_savings2" name="deposit_account" value="savings2" onchange="validateDeposit()"><label for="deposit_savings2"> Savings 2 Account</label><br>
@@ -125,7 +125,7 @@
                    <div onsubmit="withdraw_amt(event)">
                         <form id="withdraw">
                             <h2>Withdrawl</h2>
-                            <input type="number" placeholder="Enter the withdraw amount" name="withdraw_amt" id="withdraw_amt" required oninput="validateWithdraw()"/><br>
+                            <input type="text" placeholder="Enter the withdraw amount" name="withdraw_amt" id="withdraw_amt" required oninput="validateWithdraw()"/><br>
                             <input type="radio" id="current" name="withdraw_account" value="current" onchange="validateWithdraw()"><label for="current"> Current Account</label><br>
                             <input type="radio" id="savings1" name="withdraw_account" value="savings1" onchange="validateWithdraw()"><label for="savings1"> Savings 1 Account</label><br>
                             <input type="radio" id="savings2" name="withdraw_account" value="savings2" onchange="validateWithdraw()"><label for="savings2"> Savings 2 Account</label><br>
